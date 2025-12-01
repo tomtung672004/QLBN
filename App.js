@@ -1,20 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// QLBN/App.js
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import AuthManagement from './screens/others/AuthManagement';
+import MainTabNavigator from './screens/admins/MainTabNavigator';
+import CustomerTabNavigator from './screens/customers/CustomerTabNavigator';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="AuthManagement" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="AuthManagement" component={AuthManagement} />
+        <Stack.Screen name="MainTabNavigator" component={MainTabNavigator} />
+        <Stack.Screen name="CustomerTabNavigator" component={CustomerTabNavigator} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
